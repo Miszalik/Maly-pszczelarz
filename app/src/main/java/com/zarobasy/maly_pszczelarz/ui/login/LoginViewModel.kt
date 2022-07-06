@@ -2,14 +2,16 @@ package com.zarobasy.maly_pszczelarz.ui.login
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import android.util.Patterns
+import androidx.navigation.NavDirections
 import com.zarobasy.maly_pszczelarz.data.LoginRepository
 import com.zarobasy.maly_pszczelarz.data.Result
+import com.zarobasy.maly_pszczelarz.ui.NavigationCommand
+import com.zarobasy.maly_pszczelarz.ui.BaseViewModel
 
 import com.zarobasy.maly_pszczelarz.R
 
-class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel() {
+class LoginViewModel(private val loginRepository: LoginRepository) : BaseViewModel() {
 
     private val _loginForm = MutableLiveData<LoginFormState>()
     val loginFormState: LiveData<LoginFormState> = _loginForm
@@ -51,5 +53,10 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
     // A placeholder password validation check
     private fun isPasswordValid(password: String): Boolean {
         return password.length > 5
+    }
+
+    fun signedIn() {
+        var direction : NavDirections = LoginFragmentDirections.actionNavigationLoginToNavigationHome2()
+        navigateTo(NavigationCommand.To(direction));
     }
 }

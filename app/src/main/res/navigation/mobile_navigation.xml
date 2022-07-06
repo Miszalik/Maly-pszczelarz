@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@id/navigation_login">
 
     <fragment
         android:id="@+id/navigation_home"
@@ -22,4 +22,15 @@
         android:name="com.zarobasy.maly_pszczelarz.ui.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
+
+    <fragment
+        android:id="@+id/navigation_login"
+        android:name="com.zarobasy.maly_pszczelarz.ui.login.LoginFragment"
+        android:label="@string/title_activity_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_navigation_login_to_navigation_home2"
+            app:destination="@id/navigation_home" />
+    </fragment>
+
 </navigation>
